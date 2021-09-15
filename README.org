@@ -1,0 +1,18 @@
+* Dotmacs
+
+These are my emacs configs
+
+I was playing around with emacs, and I got a configuration that worked pretty well.
+
+*** Installation
+1. Clone this repo into your home directory
+2. Backup your =~/.emacs.d/= directory (if you have one)
+3. Rename the repo to =~/.emacs.d/=
+4. Profit
+
+
+*** Screenshots
+[[https://github.com/Theory-of-Everything/imagehost/blob/main/dotmacs/dotmacs_0.png?raw=true]]
+[[https://github.com/Theory-of-Everything/imagehost/blob/main/dotmacs/dotmacs_1.png?raw=true]]
+[[https://github.com/Theory-of-Everything/imagehost/blob/main/dotmacs/dotmacs_2.png?raw=true]]
+[[https://github.com/Theory-of-Everything/imagehost/blob/main/dotmacs/dotmacs_3.png?raw=true]]
