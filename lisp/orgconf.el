@@ -3,7 +3,9 @@
 ;; ----------------------------------------- Orgmode config
 (setq org-directory "~/org/"
       org-default-notes-file "~/org/notes.org")
-(setq org-agenda-files '("~/org/agenda.org"))
+(setq org-agenda-files '("~/org/agenda.org" "~/org/roam/20211110185637-ytvideos.org"))
+(setq org-startup-with-inline-images t)
+(setq org-clock-sound "~/.emacs.d/ding.wav")
 
 ;; orgmode bullets
 (use-package org-bullets

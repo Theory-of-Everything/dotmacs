@@ -3,9 +3,12 @@
 ;; install theme packages
 (use-package kaolin-themes)
 (use-package atom-one-dark-theme)
+(use-package gruvbox-theme)
 
 ;; load theme
-(load-theme 'kaolin-dark t)
+(load-theme 'atom-one-dark t)
+;;(load-theme 'kaolin-blossom t)
+;;(load-theme 'kaolin-mono-dark t)
 
 ;; font 
 (add-to-list 'default-frame-alist '(font . "agave Nerd Font Mono-12"))
@@ -32,9 +35,10 @@
           ("#+BEGIN_QUOTE" . "❝")
           ("#+end_quote" . "❞")
           ("#+END_QUOTE" . "❞")
-          ("[ ]" . "☐")
-          ("[-]" . "◯")
-          ("[X]" . "☑"))))
+          ;;("[ ]" . "☐")
+          ;;("[-]" . "◯")
+          ;;("[X]" . "☑")
+          )))
   (add-hook 'org-mode-hook 'org/prettify-set)
 
   (defun prog/prettify-set ()
@@ -44,10 +48,7 @@
           ("->" . "→")
           ("<-" . "←")
           ("<=" . "≤")
-          (">=" . "≥")
-          ("!=" . "≠")
-          ("~=" . "≃")
-          ("=~" . "≃"))))
+          (">=" . "≥"))))
   (add-hook 'prog-mode-hook 'prog/prettify-set)
 
 (global-prettify-symbols-mode)

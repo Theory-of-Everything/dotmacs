@@ -31,13 +31,6 @@
   (load bootstrap-file nil 'nomessage))
 (setq package-enable-at-startup nil)
 
-;; automatic package updates
-(use-package auto-package-update
-   :config
-   (setq auto-package-update-delete-old-versions t
-         auto-package-update-interval 4)
-   (auto-package-update-maybe))
-
 ;; install quelpa
 (unless (package-installed-p 'quelpa)
   (with-temp-buffer

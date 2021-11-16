@@ -15,11 +15,11 @@
   (evil-collection-init))
 
 ;; orgmode evil binds
-(use-package evil-org
-  :after org
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+;; (use-package evil-org-mode
+;;   :after org
+;;   :config
+;;   (require 'evil-org-agenda)
+;;   (evil-org-agenda-set-keys))
 
 ;; evil leader key
 (use-package evil-leader

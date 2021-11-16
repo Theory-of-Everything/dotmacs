@@ -19,6 +19,14 @@
       inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 
+;; Backup settings
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup/")))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+  kept-new-versions 2
+  kept-old-versions 1
+  version-control t)
+
 ;; ----------------------------------------------------------- functional packages
 
 ;; statusline
@@ -104,12 +112,43 @@
   :config
   (smooth-scrolling-mode 1))
 
+;; discord rpcs
+(use-package elcord
+	:init
+	(elcord-mode))
 
-;; ----------------------------------------------------------- "funny" packages
-;; matrix client
-(use-package matrix-client
-  :quelpa (matrix-client :fetcher github :repo "alphapapa/matrix-client.el"
-                         :files (:defaults "logo.png" "matrix-client-standalone.el.sh")))
+;; gnuplot
+(use-package gnuplot)
+(use-package gnuplot-mode)
+(autoload 'gnuplot-mode "gnuplot" "Gnuplot major mode" t)
+(autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot-mode" t)
+(setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
+
+;; themes
+(use-package autothemer)
+
+;; vi-like folds
+(use-package vimish-fold
+  :init
+  (vimish-fold-global-mode 1))
+
+;; evil integration for folds
+(use-package evil-vimish-fold
+  :init
+  (setq evil-vimish-fold-mode-lighter " ⮒")
+  (global-evil-vimish-fold-mode))
+
+(use-package undo-tree
+  :ensure t
+  :init
+  (global-undo-tree-mode))
+
+;; ----------------------------------------------------------- emacs-webkit
+(straight-use-package
+ '(webkit :type git :host github :repo "akirakyle/emacs-webkit"
+          :branch "main"
+          :files (:defaults "*.js" "*.css" "*.so")
+          :pre-build ("make")))
 
 ;; ----------------------------------------------------------- modes
 (use-package lua-mode
@@ -117,17 +156,11 @@
   (autoload 'lua-mode "lua-mode" "Lua Editing Mode." t)
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("d9a28a009cda74d1d53b1fbd050f31af7a1a105aa2d53738e9aa2515908cac4c" default))
- '(org-agenda-files '("~/org/agenda.org")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
