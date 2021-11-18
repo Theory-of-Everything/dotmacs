@@ -1,4 +1,4 @@
-(provide 'evilconf)
+(provide 'conf-evil)
 
 ;; emacs vi bindings
 (use-package evil

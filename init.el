@@ -3,12 +3,37 @@
 
 ;; extra file requires
 (require 'pack)
-(require 'orgconf)
-(require 'evilconf)
-(require 'scheme)
+(require 'conf-org)
+(require 'conf-evil)
+(require 'conf-scheme)
+(require 'conf-completion)
+
+;; scroll fix
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse t)
 
 ;; prompt yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; fonts
+;; Set the font face based on platform
+(set-face-attribute 'default nil
+                    :font "agave Nerd Font Mono"
+                    :weight 'normal
+                    :height 120)
+
+;; Set the fixed pitch face
+(set-face-attribute 'fixed-pitch nil
+                    :font "agave Nerd Font Mono"
+                    :weight 'normal
+                    :height 120)
+
+;; Set the variable pitch face
+(set-face-attribute 'variable-pitch nil
+                    :font "Work Sans"
+                    :weight 'normal
+                    :height 120)
+
 
 ;; ui declutter
 (menu-bar-mode -1)
@@ -26,6 +51,9 @@
   kept-new-versions 2
   kept-old-versions 1
   version-control t)
+
+;; custom theme load dir
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; ----------------------------------------------------------- functional packages
 
@@ -125,7 +153,8 @@
 (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
 ;; themes
-(use-package autothemer)
+(use-package autothemer
+  :ensure t)
 
 ;; vi-like folds
 (use-package vimish-fold

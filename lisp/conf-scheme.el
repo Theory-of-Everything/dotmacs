@@ -1,4 +1,4 @@
-(provide 'scheme)
+(provide 'conf-scheme)
 
 ;; install theme packages
 (use-package kaolin-themes)
