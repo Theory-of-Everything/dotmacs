@@ -86,6 +86,9 @@
     ("y" "Youtube Videos" tags-todo "+yt"
      ((org-agenda-overriding-header "Planned Videos")))
 
+    ("t" "School Tasks" tags-todo "+school"
+     ((org-agenda-overriding-header "School Assignments")))
+
     ("W" "Work Tasks" tags-todo "+work-email")
 
     ("w" "Workflow Status"

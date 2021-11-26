@@ -8,6 +8,14 @@
 (require 'conf-scheme)
 (require 'conf-completion)
 
+;; other fixes
+(setq-default
+  custom-safe-themes t ;; Don't ask if theme is safe
+  warning-minimum-level :emergency ;; Emacs, honestly, I want you to shut up
+  disabled-command-function nil ;; Yes I want to use that command
+  vc-follow-symlinks) ;; Follow those damn symlinks!
+
+
 ;; scroll fix
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse t)
@@ -96,7 +104,12 @@
          (,(all-the-icons-fileicon "emacs" :hieght 1.1 :v-adjust 0.0)
           "Edit Config"
           "Edit Emacs Config"
-          (lambda (&rest _) (find-file "~/.emacs.d/init.el"))))))
+          (lambda (&rest _) (find-file "~/.emacs.d/init.el")))
+         (,(all-the-icons-faicon "sticky-note" :height 1.1 :v-adjust 0.0)
+          "Notes"
+          "Open Org Notes"
+          (lambda (&rest _) (dired-at-point "~/org/")))
+         )))
 
 ;; Project management via projectile
 (use-package projectile
@@ -167,10 +180,28 @@
   (setq evil-vimish-fold-mode-lighter " ⮒")
   (global-evil-vimish-fold-mode))
 
+;; undo-tree
 (use-package undo-tree
   :ensure t
   :init
   (global-undo-tree-mode))
+
+;; holy shit tabs
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  :hook
+  (dashboard-mode . centaur-tabs-local-mode)
+  (special-mode . centaur-tabs-local-mode))
+  (centaur-tabs-headline-match)
+(setq centaur-tabs-height 32
+  centaur-tabs-gray-out-icons 'buffer
+  centaur-tabs-set-modified-marker t
+  centaur-tabs-set-icons t
+  ;;centaur-tabs-style "wave"
+  centaur-tabs-set-bar 'left)
+
 
 ;; ----------------------------------------------------------- emacs-webkit
 (straight-use-package
